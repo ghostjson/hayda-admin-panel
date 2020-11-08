@@ -39,41 +39,53 @@
                     </div>
                 </div>
                 <ul class="nav nav-primary">
-                    <li class="nav-item active">
-                        <a data-toggle="collapse" href="#dashboard">
-                            <i class="fas fa-tv"></i>
-                            <p>Dashboard</p>
-                        </a>
+                    <li class="nav-item"  v-bind:class="{ active: active('Home') }">
+                        <router-link to="/" style="padding: 0">
+                            <a data-toggle="collapse" href="#dashboard">
+                                <i class="fas fa-tv"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </router-link>
                     </li>
-                    <li class="nav-item">
-                        <a data-toggle="collapse" href="#base">
-                            <i class="fas fa-file-medical-alt"></i>
-                            <p>Health Hub</p>
-                        </a>
+                    <li class="nav-item" v-bind:class="{ active: active('HealthHub') }">
+                        <router-link to="/health-hub" style="padding: 0">
+                            <a data-toggle="collapse" href="#">
+                                <i class="fas fa-file-medical-alt"></i>
+                                <p>Health Hub</p>
+                            </a>
+                        </router-link>
                     </li>
-                    <li class="nav-item">
-                        <a data-toggle="collapse" href="#base">
-                            <i class="fas fa-edit"></i>
-                            <p>Page Editor</p>
-                        </a>
+                    <li class="nav-item"  v-bind:class="{ active: active('PageEditor') }">
+                        <router-link to="/page-editor" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-edit"></i>
+                                <p>Page Editor</p>
+                            </a>
+                        </router-link>
                     </li>
-                    <li class="nav-item">
-                        <a data-toggle="collapse" href="#base">
-                            <i class="fas fa-money-check-alt"></i>
-                            <p>Subscriptions</p>
-                        </a>
+                    <li class="nav-item"  v-bind:class="{ active: active('Subscriptions') }">
+                        <router-link to="/subscriptions" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-money-check-alt"></i>
+                                <p>Subscriptions</p>
+                            </a>
+                        </router-link>
                     </li>
-                    <li class="nav-item">
-                        <a data-toggle="collapse" href="#base">
-                            <i class="fas fa-pen-nib"></i>
-                            <p>Blog</p>
-                        </a>
+                    <li class="nav-item"  v-bind:class="{ active: active('Blog') }">
+                        <router-link to="/blog" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-pen-nib"></i>
+                                <p>Blog</p>
+                            </a>
+                        </router-link>
                     </li>
-                    <li class="nav-item">
-                        <a data-toggle="collapse" href="#base">
-                            <i class="fas fa-cog"></i>
-                            <p>Settings</p>
-                        </a>
+                    <li class="nav-item"  v-bind:class="{ active: active('Settings') }">
+                        <router-link to="/settings" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-cog"></i>
+                                <p>Settings</p>
+                            </a>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -85,6 +97,12 @@
 
 <script>
     export default {
-        name: 'SideBarPartial'
+        name: 'SideBarPartial',
+        methods: {
+            active(path) {
+                return path === this.$route.name;
+            },
+
+        }
     }
 </script>
