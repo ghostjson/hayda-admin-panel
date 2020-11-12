@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
   import FooterPartial from "./components/partials/FooterPartial";
   import SideBarPartial from "./components/partials/SideBarPartial";
   import MainHeader from "./components/partials/MainHeader";
