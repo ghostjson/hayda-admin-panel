@@ -1,5 +1,6 @@
 import Api from "../services/Api";
 
+
 export const auth = {
     state: {
         token: null,
@@ -31,12 +32,16 @@ export const auth = {
             }
         },
         async logout({commit}){
-            let response = await Api().get('auth/logout')
-            if(response.status === 200){
+            let response;
+            try{
+                response = await Api().get('auth/logout')
+            }finally {
                 localStorage.removeItem('Token')
                 commit('setToken', null);
                 commit('setUser', null);
             }
+
+            return response
         }
     }
 }

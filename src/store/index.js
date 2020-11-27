@@ -11,6 +11,9 @@ export default createStore({
       state.spinner = status
     }
   },
+  getters: {
+    spinner: state => state.spinner
+  },
   actions: {
     openSpinner({commit}){
       commit('setSpinner', true)

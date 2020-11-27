@@ -266,7 +266,7 @@
         methods: {
             logout(){
                 this.$store.dispatch('logout')
-                    .then(() => this.$router.push('/login'))
+                    .finally(() => this.$router.push('/login'))
             }
         }
     }

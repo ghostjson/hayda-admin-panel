@@ -1,36 +1,53 @@
 <template>
-  <div class="wrapper">
+    <div class="wrapper">
 
-    <main-header></main-header>
+        <loader v-if="loader"></loader>
 
-    <side-bar-partial></side-bar-partial>
+        <main-header></main-header>
 
-    <div class="main-panel">
-      <div class="content">
-        <div class="page-inner">
-          <router-view></router-view>
+        <side-bar-partial></side-bar-partial>
+
+        <div class="main-panel">
+            <div class="content">
+                <div class="page-inner">
+                    <router-view></router-view>
+                </div>
+            </div>
+
+            <footer-partial></footer-partial>
+
         </div>
-      </div>
-
-      <footer-partial></footer-partial>
 
     </div>
-
-  </div>
 
 </template>
 
 <script>
 
-  import FooterPartial from "./components/partials/FooterPartial";
-  import SideBarPartial from "./components/partials/SideBarPartial";
-  import MainHeader from "./components/partials/MainHeader";
-  export default {
-    components: {MainHeader, SideBarPartial, FooterPartial},
-    mounted() {
-      if(localStorage.getItem('Token') === null){
-        this.$router.push('/login')
-      }
+    import FooterPartial from "./components/partials/FooterPartial";
+    import SideBarPartial from "./components/partials/SideBarPartial";
+    import MainHeader from "./components/partials/MainHeader";
+    import Loader from "./components/widgets/Loader";
+
+    export default {
+        components: {Loader, MainHeader, SideBarPartial, FooterPartial},
+        data() {
+            return {
+                loader: false
+            }
+        },
+        mounted() {
+            if (localStorage.getItem('Token') === null) {
+                this.$router.push('/login')
+            }
+        },
+        created() {
+            this.unwatch = this.$store.watch(
+                (state, getters) => getters.spinner,
+                (newValue) => {
+                    this.loader = newValue
+                },
+            );
+        }
     }
-  }
 </script>
