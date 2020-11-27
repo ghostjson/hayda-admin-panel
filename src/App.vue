@@ -26,6 +26,11 @@
   import SideBarPartial from "./components/partials/SideBarPartial";
   import MainHeader from "./components/partials/MainHeader";
   export default {
-    components: {MainHeader, SideBarPartial, FooterPartial}
+    components: {MainHeader, SideBarPartial, FooterPartial},
+    mounted() {
+      if(localStorage.getItem('Token') === null){
+        this.$router.push('/login')
+      }
+    }
   }
 </script>

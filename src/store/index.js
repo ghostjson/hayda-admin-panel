@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import {healthHub} from "./health_hub";
+import {auth} from "./auth";
 
 export default createStore({
   state: {
@@ -21,6 +22,9 @@ export default createStore({
   modules: {
     health_hub: {
       ...healthHub
+    },
+    auth: {
+      ...auth
     }
   }
 })
