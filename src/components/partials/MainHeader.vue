@@ -6,7 +6,8 @@
             <a href="/" class="logo">
                 <img src="assets/logo/logo-with-caption.png" alt="navbar brand" width="120px" class="navbar-brand">
             </a>
-            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
 						<i class="icon-menu"></i>
 					</span>
@@ -38,12 +39,14 @@
                 </div>
                 <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                     <li class="nav-item toggle-nav-search hidden-caret">
-                        <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+                        <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button"
+                           aria-expanded="false" aria-controls="search-nav">
                             <i class="fa fa-search"></i>
                         </a>
                     </li>
                     <li class="nav-item dropdown hidden-caret">
-                        <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-envelope"></i>
                         </a>
                         <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
@@ -108,12 +111,14 @@
                                 </div>
                             </li>
                             <li>
-                                <a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
+                                <a class="see-all" href="javascript:void(0);">See all messages<i
+                                        class="fa fa-angle-right"></i> </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown hidden-caret">
-                        <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
                             <span class="notification">4</span>
                         </a>
@@ -125,7 +130,7 @@
                                 <div class="notif-scroll scrollbar-outer">
                                     <div class="notif-center">
                                         <a href="#">
-                                            <div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
+                                            <div class="notif-icon notif-primary"><i class="fa fa-user-plus"></i></div>
                                             <div class="notif-content">
 													<span class="block">
 														New user registered
@@ -134,7 +139,7 @@
                                             </div>
                                         </a>
                                         <a href="#">
-                                            <div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
+                                            <div class="notif-icon notif-success"><i class="fa fa-comment"></i></div>
                                             <div class="notif-content">
 													<span class="block">
 														Rahmad commented on Admin
@@ -154,7 +159,7 @@
                                             </div>
                                         </a>
                                         <a href="#">
-                                            <div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
+                                            <div class="notif-icon notif-danger"><i class="fa fa-heart"></i></div>
                                             <div class="notif-content">
 													<span class="block">
 														Farrah liked Admin
@@ -166,7 +171,8 @@
                                 </div>
                             </li>
                             <li>
-                                <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
+                                <a class="see-all" href="javascript:void(0);">See all notifications<i
+                                        class="fa fa-angle-right"></i> </a>
                             </li>
                         </ul>
                     </li>
@@ -233,10 +239,13 @@
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile"
+                                                                    class="avatar-img rounded"></div>
                                         <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                            <h4>{{ name }}</h4>
+                                            <p class="text-muted">{{ email }}</p><a href="profile.html"
+                                                                                          class="btn btn-xs btn-secondary btn-sm">View
+                                            Profile</a>
                                         </div>
                                     </div>
                                 </li>
@@ -261,12 +270,29 @@
 </template>
 
 <script>
+
     export default {
         name: 'MainHeader',
+        data() {
+            return {
+                // name: ''
+            }
+        },
         methods: {
-            logout(){
+            logout() {
                 this.$store.dispatch('logout')
                     .finally(() => this.$router.push('/login'))
+            }
+        },
+        mounted() {
+            console.log()
+        },
+        computed: {
+            name(){
+                return JSON.parse(localStorage.getItem('User')).name
+            },
+            email(){
+                return JSON.parse(localStorage.getItem('User')).email
             }
         }
     }

@@ -4,7 +4,7 @@ import {auth} from "./auth";
 
 export default createStore({
   state: {
-    spinner: false
+    spinner: false,
   },
   mutations: {
     setSpinner(state, status){

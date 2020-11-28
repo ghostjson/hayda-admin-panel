@@ -6,42 +6,55 @@ export const auth = {
         token: null,
         user: null
     },
+    getters: {
+        name: state => state.user.name
+    },
     mutations: {
-        setToken(state, access_token){
-            this.state.token = access_token;
+        setToken(state, access_token) {
+            state.token = access_token;
         },
-        setUser(state, user){
-            this.state.user = user;
+        setUser(state, user) {
+            state.user = user;
         }
     },
     actions: {
         async login({commit}, credential) {
 
-            try{
+            try {
                 let response = await Api().post('/auth/login', credential)
+
+                if(response.data.user.role !== 'admin')
+                {
+                    return 401;
+                }
 
                 commit('setToken', response.data.access_token);
                 commit('setUser', response.data.user);
 
+
                 localStorage.setItem('Token', response.data.access_token)
+                localStorage.setItem('User', JSON.stringify(response.data.user));
                 return response.status
 
-            }catch(e){
+            } catch (e) {
                 localStorage.removeItem('Token')
+                localStorage.removeItem('User')
                 return e.response.status
             }
         },
-        async logout({commit}){
+        async logout({commit}) {
             let response;
-            try{
-                response = await Api().get('auth/logout')
-            }finally {
+            try {
+                if(localStorage.getItem('Token') !== null){
+                    response = await Api().get('auth/logout')
+                }
+            } finally {
                 localStorage.removeItem('Token')
                 commit('setToken', null);
                 commit('setUser', null);
             }
 
             return response
-        }
+        },
     }
 }
