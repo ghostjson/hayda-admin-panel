@@ -289,10 +289,14 @@
         },
         computed: {
             name(){
-                return JSON.parse(localStorage.getItem('User')).name
+                if(localStorage.getItem('User') !== null)
+                    return JSON.parse(localStorage.getItem('User')).name
+                else return ''
             },
             email(){
-                return JSON.parse(localStorage.getItem('User')).email
+                if(localStorage.getItem('User') !== null)
+                    return JSON.parse(localStorage.getItem('User')).email
+                else return ''
             }
         }
     }

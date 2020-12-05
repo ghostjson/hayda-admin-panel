@@ -27,8 +27,9 @@
     </modal-widget>
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="display: flex; justify-content: space-between">
             <h3>Subscriptions</h3>
+            <button @click="saveChanges" class="btn btn-sm btn-primary">Save Changes</button>
         </div>
         <div class="card-body">
             <div class="row">
@@ -71,6 +72,7 @@
 <script>
     import DeleteIcon from "../components/widgets/icons/DeleteIcon";
     import ModalWidget from "../components/widgets/ModalWidget";
+    import Api from "../services/Api";
     export default {
         name: 'Subscriptions',
         components: {ModalWidget, DeleteIcon},
@@ -83,58 +85,58 @@
                 change_price_field: 0,
                 current_change_price: 0,
                 subscription: [
-                    {
-                        name: 'Free',
-                        features: [
-                            'Health Information',
-                            'Resources',
-                            'Games',
-                            'Incentives',
-                            'Feedback',
-                            'Geolocation',
-                            'Machine Learning',
-                            'Alert Notification',
-                            'Email list',
-                            'Basic Chatbot',
-                            'Social Community'
-                        ],
-                        price: 0
-                    },
-                    {
-                        name: 'Premium',
-                        features: [
-                            'Basic offering plus in-depth analysis',
-                            'Health Coach',
-                            'Video Chat By Appointment',
-                            'Chatbot On Demand',
-                            'Reminder Prompts',
-                            'Blogging',
-                            'Podcast'
-                        ],
-                        price: 0
-                    },
-                    {
-                        name: 'Premium Plus',
-                        features: [
-                            'Premium Offering',
-                            'Upload Data',
-                            'Algorithm Analysis',
-                            'Goal Setting',
-                            'Video Chat 24/7',
-                            'Personalized Health Plans',
-                            'Behavior Modification',
-                            'Group Support',
-                            'Monitoring Of Progress'
-                        ],
-                        price: 0
-                    }
+                    // {
+                    //     name: 'Free',
+                    //     features: [
+                    //         'Health Information',
+                    //         'Resources',
+                    //         'Games',
+                    //         'Incentives',
+                    //         'Feedback',
+                    //         'Geolocation',
+                    //         'Machine Learning',
+                    //         'Alert Notification',
+                    //         'Email list',
+                    //         'Basic Chatbot',
+                    //         'Social Community'
+                    //     ],
+                    //     price: 0
+                    // },
+                    // {
+                    //     name: 'Premium',
+                    //     features: [
+                    //         'Basic offering plus in-depth analysis',
+                    //         'Health Coach',
+                    //         'Video Chat By Appointment',
+                    //         'Chatbot On Demand',
+                    //         'Reminder Prompts',
+                    //         'Blogging',
+                    //         'Podcast'
+                    //     ],
+                    //     price: 0
+                    // },
+                    // {
+                    //     name: 'Premium Plus',
+                    //     features: [
+                    //         'Premium Offering',
+                    //         'Upload Data',
+                    //         'Algorithm Analysis',
+                    //         'Goal Setting',
+                    //         'Video Chat 24/7',
+                    //         'Personalized Health Plans',
+                    //         'Behavior Modification',
+                    //         'Group Support',
+                    //         'Monitoring Of Progress'
+                    //     ],
+                    //     price: 0
+                    // }
                 ]
             }
         },
         methods: {
             deleteFeature(indexS, index){
-                delete this.subscription[indexS].features[index]
-                location.reload()
+                // delete this.subscription[indexS].features[index]
+                this.subscription[indexS].features.splice(index, 1)
             },
             changePrice(){
                 this.subscription[this.current_change_price].price = this.change_price_field
@@ -159,7 +161,22 @@
             addFeature(){
                 this.subscription[this.current_add_feature].features.push(this.add_feature_field)
                 this.closeModal()
+            },
+            saveChanges(){
+
+                Api().post('/subscriptions', {
+                    'subscriptions': this.subscription
+                })
+
+            },
+            async fetchSubscriptions(){
+                let response = await Api().get('/subscriptions')
+                console.log(response.data.data)
+                this.subscription = response.data.data
             }
+        },
+        mounted() {
+            this.fetchSubscriptions()
         }
     }
 </script>
