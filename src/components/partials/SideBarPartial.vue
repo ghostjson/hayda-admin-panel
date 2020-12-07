@@ -5,7 +5,7 @@
             <div class="sidebar-content">
                 <div class="user">
                     <div class="avatar-sm float-left mr-2">
-                        <img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -30,9 +30,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#settings">
+                                    <router-link to="/settings">
                                         <span class="link-collapse">Settings</span>
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </div>
@@ -55,8 +55,16 @@
                             </a>
                         </router-link>
                     </li>
+                    <li class="nav-item"  v-bind:class="{ active: active('Blog') }">
+                        <router-link to="/blog" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-pen-nib"></i>
+                                <p>Blog</p>
+                            </a>
+                        </router-link>
+                    </li>
                     <li class="nav-item"  v-bind:class="{ active: active('PageEditor') }">
-                        <router-link to="/page-editor" style="padding: 0">
+                        <router-link to="/pages" style="padding: 0">
                             <a data-toggle="collapse" href="#base">
                                 <i class="fas fa-edit"></i>
                                 <p>Page Editor</p>
@@ -71,14 +79,7 @@
                             </a>
                         </router-link>
                     </li>
-                    <li class="nav-item"  v-bind:class="{ active: active('Blog') }">
-                        <router-link to="/blog" style="padding: 0">
-                            <a data-toggle="collapse" href="#base">
-                                <i class="fas fa-pen-nib"></i>
-                                <p>Blog</p>
-                            </a>
-                        </router-link>
-                    </li>
+
                     <li class="nav-item"  v-bind:class="{ active: active('Settings') }">
                         <router-link to="/settings" style="padding: 0">
                             <a data-toggle="collapse" href="#base">

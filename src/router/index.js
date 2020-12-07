@@ -13,9 +13,14 @@ const routes = [
     component: () => import('../views/HealthHub')
   },
   {
-    path: '/page-editor',
+    path: '/pages',
     name: 'PageEditor',
     component: () => import('../views/PageEditor')
+  },
+  {
+    path: '/pages/new',
+    name: 'NewPage',
+    component: () => import('../views/NewPage')
   },
   {
     path: '/subscriptions',

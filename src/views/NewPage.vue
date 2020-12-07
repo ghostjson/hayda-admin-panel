@@ -2,32 +2,32 @@
     <div class="container-fluid">
 
         <div class="card">
-            <div class="card-header">{{ blog.title }}</div>
+            <div class="card-header">{{ page.title }}</div>
             <div class="card-body">
 
                 <error-alert :error="error"></error-alert>
                 <success-alert :message="success"></success-alert>
-                <form @submit="blogSubmit">
+                <form @submit="pageSubmit">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" v-model="blog.title">
+                        <input type="text" class="form-control" id="title" v-model="page.title">
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <input type="text" class="form-control" id="category" v-model="blog.category">
+                        <input type="text" class="form-control" id="category" v-model="page.category">
                     </div>
                     <div class="form-group">
                         <label for="image">Image URL</label>
-                        <input type="text" class="form-control" id="image" v-model="blog.image">
+                        <input type="text" class="form-control" id="image" v-model="page.image">
                     </div>
 
                     <!--                    <div class="form-group">-->
-<!--                        <label for="tags">Tags</label>-->
-<!--                        <input type="text" class="form-control" id="tags" v-model="tags">-->
-<!--                    </div>-->
+                    <!--                        <label for="tags">Tags</label>-->
+                    <!--                        <input type="text" class="form-control" id="tags" v-model="tags">-->
+                    <!--                    </div>-->
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea class="form-control" v-model="blog.content" id="content" rows="10"></textarea>
+                        <textarea class="form-control" v-model="page.content" id="content" rows="10"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -48,12 +48,12 @@
     import SuccessAlert from "../components/widgets/SuccessAlert";
 
     export default {
-        name: 'NewBlog',
+        name: 'NewPage',
         components: {SuccessAlert, ErrorAlert},
         data() {
             return {
-                blog: {
-                    title: 'New Blog',
+                page: {
+                    title: 'New Page',
                     category: '',
                     content: '',
                     image: ''
@@ -63,12 +63,12 @@
             }
         },
         methods: {
-            async blogSubmit(e){ e.preventDefault()
+            async pageSubmit(e){ e.preventDefault()
                 try{
-                    let res = await Api().post('/blog', this.blog)
-                    await this.$router.push('/blog');
+                    await Api().post('/pages', this.page)
+                    await this.$router.push('/pages');
                 }catch (e) {
-                    this.error = 'Error posting Blog'
+                    this.error = 'Error posting Page'
                 }
 
             }
