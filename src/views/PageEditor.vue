@@ -41,6 +41,7 @@
                                 <!--                  <td>{{ blog.tag }}</td>-->
                                 <td>{{ page.created_at }}</td>
                                 <td>
+                                    <a :href="page.link" target="_blank" style="font-size: 1.1em;position: relative; right: 9px;top: 3px;"><i class="fas fa-eye"></i></a>
                                     <delete-icon
                                             v-on:click="deletePage(page.id)"
                                             size="2em"
@@ -77,10 +78,11 @@
             async fetchPages() {
                 let response = await Api().get("/pages");
                 this.pages = response.data.data;
-            },
+            }
         },
         mounted() {
             this.fetchPages();
+
         },
     }
 </script>
