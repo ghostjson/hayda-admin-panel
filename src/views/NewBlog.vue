@@ -65,7 +65,7 @@
         methods: {
             async blogSubmit(e){ e.preventDefault()
                 try{
-                    let res = await Api().post('/blog', this.blog)
+                    await Api().post('/blog', this.blog)
                     await this.$router.push('/blog');
                 }catch (e) {
                     this.error = 'Error posting Blog'
