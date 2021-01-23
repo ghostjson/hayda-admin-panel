@@ -1,5 +1,5 @@
 {
   "server" : {
-    "api_url": "http://localhost:8000/api"
+    "api_url": "http://18.222.87.115/api"
   }
 }

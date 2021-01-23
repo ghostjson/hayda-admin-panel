@@ -63,6 +63,14 @@
                             </a>
                         </router-link>
                     </li>
+                    <li class="nav-item"  v-bind:class="{ active: active('Nutrition') }">
+                        <router-link to="/nutrition" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-pen-nib"></i>
+                                <p>Nutrition Goals</p>
+                            </a>
+                        </router-link>
+                    </li>
                     <li class="nav-item"  v-bind:class="{ active: active('PageEditor') }">
                         <router-link to="/pages" style="padding: 0">
                             <a data-toggle="collapse" href="#base">

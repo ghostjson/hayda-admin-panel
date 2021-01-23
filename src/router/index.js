@@ -33,9 +33,19 @@ const routes = [
     component: () => import('../views/Blog')
   },
   {
+    path: '/nutrition',
+    name: 'Nutrition',
+    component: () => import('../views/Nutrition')
+  },
+  {
     path: '/blog/new',
     name: 'NewBlog',
     component: () => import('../views/NewBlog')
+  },
+  {
+    path: '/nutrition/new',
+    name: 'NewNutrition',
+    component: () => import('../views/NewNutrition')
   },
   {
     path: '/settings',
