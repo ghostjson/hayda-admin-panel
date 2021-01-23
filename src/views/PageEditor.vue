@@ -20,6 +20,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <error-alert :error="error"></error-alert>
                         <table class="table">
                             <thead>
                             <tr>
@@ -60,17 +61,21 @@
 <script>
     import DeleteIcon from "../components/widgets/icons/DeleteIcon";
     import Api from "../services/Api";
+    import ErrorAlert from "../components/widgets/ErrorAlert";
     export default {
         name: 'PageEditor',
-        components: {DeleteIcon },
+        components: {ErrorAlert, DeleteIcon },
         data() {
             return {
                 pages: [],
+                error: ''
             };
         },
         methods: {
             deletePage(id) {
-                console.log(id);
+               Api().delete('/pages/'+id)
+                    .then(() => location.reload())
+                    .catch(() => this.error = 'Error delete page')
             },
             newPage() {
                 this.$router.push("/pages/new");
