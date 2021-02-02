@@ -48,6 +48,11 @@ const routes = [
     component: () => import('../views/ContentEditor/AboutContent')
   },
   {
+    path: '/content-editor/footer',
+    name: 'ContentEditorFooter',
+    component: () => import('../views/ContentEditor/FooterContent')
+  },
+  {
     path: '/blog/new',
     name: 'NewBlog',
     component: () => import('../views/NewBlog')
