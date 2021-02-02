@@ -4,6 +4,7 @@ import store from "./../store/index";
 
 export default () => {
   const axiosObject = axios.create({
+    // baseURL: config.server.api_url,
     baseURL: "http://localhost:8000/api",
     withCredentials: false,
     headers: {

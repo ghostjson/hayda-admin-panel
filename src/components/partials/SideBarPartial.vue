@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <ul class="nav nav-primary">
-                    <li class="nav-item"  v-bind:class="{ active: active('Home') }">
+                    <li class="nav-item"  v-bind:class="{ active: active('HomeContent.vue') }">
                         <router-link to="/" style="padding: 0">
                             <a data-toggle="collapse" href="#dashboard">
                                 <i class="fas fa-tv"></i>
@@ -63,11 +63,11 @@
                             </a>
                         </router-link>
                     </li>
-                    <li class="nav-item"  v-bind:class="{ active: active('Nutrition') }">
-                        <router-link to="/nutrition" style="padding: 0">
+                    <li class="nav-item"  v-bind:class="{ active: active('ContentEditor') }">
+                        <router-link :to="{name: 'ContentEditor'}" style="padding: 0">
                             <a data-toggle="collapse" href="#base">
                                 <i class="fas fa-pen-nib"></i>
-                                <p>Nutrition Goals</p>
+                                <p>Content Editor</p>
                             </a>
                         </router-link>
                     </li>
