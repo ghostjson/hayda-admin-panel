@@ -70,7 +70,6 @@
                 let heads = this.link_names.split(',').map((name) => name.trim())
                 let links = this.links.split(',').map((link) => link.trim())
 
-                console.log(links)
 
                 this.footer.links = []
                 heads.forEach((value,index) => {
@@ -81,6 +80,7 @@
                 })
 
 
+                console.log(this.footer)
                 Api().post('page-content/footer', {
                     content: this.footer
                 })

@@ -11,6 +11,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+
                         <error-alert :error="error"></error-alert>
                         <table class="table">
                             <thead>
@@ -30,7 +31,10 @@
                             </tr>
                             </tbody>
                         </table>
+                        <small>You can find icon names at <a target="_blank" href="https://fontawesome.com/v4.7.0/icons/">fontawesome</a></small>
+
                     </div>
+
                 </div>
             </div>
         </div>

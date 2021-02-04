@@ -5,7 +5,7 @@
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            Blog
+                            Blogs
                         </a>
                     </li>
                     <li class="nav-item">
@@ -15,7 +15,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            Link3
+
                         </a>
                     </li>
                 </ul>
