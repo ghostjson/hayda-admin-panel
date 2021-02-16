@@ -10,6 +10,19 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>Theme</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="theme_color">Primary theme colour</label>
+                    <input id="theme_color" type="color" v-model="theme.primary_color" class="form-control">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Stripe Credentials</h4>
             </div>
             <div class="card-body">
@@ -38,6 +51,9 @@
             return{
                 settings: [
                 ],
+                theme: {
+                    primary_color: ''
+                },
                 error: '',
                 success: ''
             }
@@ -45,6 +61,8 @@
         methods: {
             async settingUpdate(e){ e.preventDefault()
                 try{
+                    this.settings['theme'] = JSON.stringify(this.theme)
+
                     await Api().post('/settings', {
                         'settings': this.settings
                     })
@@ -57,6 +75,9 @@
             async fetchSettings(){
                 let response = await Api().get('/settings')
                 this.settings = response.data
+
+                this.theme = JSON.parse(this.settings['theme']);
+
             }
         },
         computed:{},
