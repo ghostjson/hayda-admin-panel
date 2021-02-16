@@ -18,6 +18,11 @@
                     <input id="theme_color" type="color" v-model="theme.primary_color" class="form-control">
                 </div>
 
+                <div class="form-group">
+                    <label for="theme_secondary_color">Secondary theme colour</label>
+                    <input id="theme_secondary_color" type="color" v-model="theme.secondary_color" class="form-control">
+                </div>
+
             </div>
         </div>
 
@@ -52,7 +57,8 @@
                 settings: [
                 ],
                 theme: {
-                    primary_color: ''
+                    primary_color: '',
+                    secondary_color: ''
                 },
                 error: '',
                 success: ''

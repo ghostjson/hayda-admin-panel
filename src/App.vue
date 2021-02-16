@@ -22,6 +22,7 @@
 
 </template>
 
+
 <script>
 
     import FooterPartial from "./components/partials/FooterPartial";
