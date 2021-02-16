@@ -10,6 +10,18 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>Contact</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="contact_email">Email</label>
+                    <input id="contact_email" type="email" v-model="settings['website_contact_email']" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Theme</h4>
             </div>
             <div class="card-body">
