@@ -78,7 +78,6 @@ export default {
     async fetchBlogs() {
       let response = await Api().get("/blog");
       this.blogs = response.data.data;
-      console.log(this.blogs);
     },
   },
   mounted() {

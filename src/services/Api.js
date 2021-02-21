@@ -37,7 +37,7 @@ export default () => {
     (error) => {
       store.dispatch("closeSpinner");
 
-      if (error.response.status) {
+      if (error.response.status === 401) {
         localStorage.removeItem("Token");
         this.$router.push('/login').then(r => console.log(r))
       }

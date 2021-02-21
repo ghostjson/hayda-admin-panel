@@ -279,7 +279,6 @@
         },
         computed:{
             links() {
-                console.log(this.$store.state.health_hub.health_hub_links)
                 return this.$store.state.health_hub.health_hub_links
             }
         }

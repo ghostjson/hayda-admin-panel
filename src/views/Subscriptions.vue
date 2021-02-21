@@ -171,7 +171,6 @@
             },
             async fetchSubscriptions(){
                 let response = await Api().get('/subscriptions')
-                console.log(response.data.data)
                 this.subscription = response.data.data
             }
         },

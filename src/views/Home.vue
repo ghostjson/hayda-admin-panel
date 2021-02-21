@@ -44,7 +44,6 @@ export default {
     async fetchData(){
       let response = await Api().get('/stats')
       this.stats = response.data
-      console.log(this.stats)
     }
   },
 
