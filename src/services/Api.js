@@ -37,8 +37,9 @@ export default () => {
       store.dispatch("closeSpinner");
 
       if (error.response.status === 401) {
-        localStorage.removeItem("Token");
-        this.$store.dispatch('logout');
+        localStorage.removeItem('expiry')
+        localStorage.removeItem('Token');
+        location.href = '/login'
       }
 
       return Promise.reject(error);
