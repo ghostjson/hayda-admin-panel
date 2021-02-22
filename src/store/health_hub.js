@@ -8,7 +8,8 @@ export const healthHub = {
                 brain_health: [],
                 heart_health: [],
                 insure_your_health: [],
-                wealth_tips: []
+                wealth_tips: [],
+                mindfulness: []
             }
         }
     },
@@ -26,6 +27,14 @@ export const healthHub = {
                 }
             } else {
                 console.log('Error in addHealthHubLink | health_hub.js | store.index.js')
+            }
+        },
+        async updateHealthHubLink(state, link) {
+            let response = await Api().post('/health-hub/'+link.id, link)
+            if (response.status === 200) {
+                    location.reload();
+            } else {
+                console.log('Error in updateHealthHubLink | health_hub.js | store.index.js')
             }
         },
         async removeHealthHubLink(state, id) {
