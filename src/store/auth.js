@@ -31,7 +31,7 @@ export const auth = {
                 commit('setToken', response.data.access_token);
                 commit('setUser', response.data.user);
 
-
+                localStorage.setItem('expiry', new Date().getTime().toString())
                 localStorage.setItem('Token', response.data.access_token)
                 localStorage.setItem('User', JSON.stringify(response.data.user));
                 return response.status
@@ -49,6 +49,7 @@ export const auth = {
                     response = await Api().get('auth/logout')
                 }
             } finally {
+                localStorage.removeItem('expiry')
                 localStorage.removeItem('Token')
                 commit('setToken', null);
                 commit('setUser', null);

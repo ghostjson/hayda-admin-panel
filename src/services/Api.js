@@ -1,5 +1,4 @@
 import axios from "axios";
-// import config from "./../config.json";
 import store from "./../store/index";
 
 export default () => {
@@ -39,7 +38,7 @@ export default () => {
 
       if (error.response.status === 401) {
         localStorage.removeItem("Token");
-        this.$router.push('/login').then(r => console.log(r))
+        this.$store.dispatch('logout');
       }
 
       return Promise.reject(error);

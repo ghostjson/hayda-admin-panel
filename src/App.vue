@@ -38,9 +38,7 @@
             }
         },
         mounted() {
-            if (localStorage.getItem('Token') === null) {
-                this.$router.push('/login')
-            }
+
         },
         created() {
             this.unwatch = this.$store.watch(
@@ -49,6 +47,18 @@
                     this.loader = newValue
                 },
             );
+
+            if(localStorage.getItem('expiry') !== null){
+                let minutes = (new Date().getTime().toString() - localStorage.getItem('expiry'))/60000
+                if (minutes < 10 && localStorage.getItem('Token') === null){
+                    localStorage.removeItem('Token')
+                    localStorage.removeItem('User')
+                    this.$router.push('/login')
+                }
+            }else{
+                this.$router.push('/login')
+            }
+
         }
     }
 </script>
