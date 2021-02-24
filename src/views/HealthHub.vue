@@ -363,7 +363,7 @@
             submitAddLink(){
                 this.$store.commit('addHealthHubLink', this.add_form)
                 this.closeAddLinkModal()
-                location.reload()
+                // location.reload()
             },
             removeLink(){
                 if(this.current_remove_form_id !== -1){

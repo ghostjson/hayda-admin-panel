@@ -23,7 +23,7 @@ export const healthHub = {
                 try{
                     state.health_hub_links.data[link.category].push(link);
                 }catch (e) {
-                    location.reload();
+                    console.log(e)
                 }
             } else {
                 console.log('Error in addHealthHubLink | health_hub.js | store.index.js')
