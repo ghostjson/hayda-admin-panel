@@ -19,6 +19,7 @@
               </div>
             </div>
           </div>
+          <success-alert :message="message"></success-alert>
           <div class="card-body">
             <table class="table">
               <thead>
@@ -59,18 +60,23 @@
 <script>
 import DeleteIcon from "../components/widgets/icons/DeleteIcon";
 import Api from "../services/Api";
+import SuccessAlert from "../components/widgets/SuccessAlert";
 
 export default {
   name: "Blog",
-  components: { DeleteIcon },
+  components: {SuccessAlert, DeleteIcon },
   data() {
     return {
       blogs: [],
+      message: ''
     };
   },
   methods: {
     deleteBlog(id) {
-      console.log(id);
+      let response = Api().delete('/blog/'+id)
+      response.then(() => {
+        this.message = 'Successfully deleted blog post'
+      })
     },
     newBlog() {
       this.$router.push("/blog/new");
