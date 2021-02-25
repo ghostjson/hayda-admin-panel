@@ -1,5 +1,6 @@
 import axios from "axios";
 import store from "./../store/index";
+// import config from "./../config.json"
 
 export default () => {
   const axiosObject = axios.create({

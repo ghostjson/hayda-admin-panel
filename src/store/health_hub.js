@@ -21,7 +21,11 @@ export const healthHub = {
             let response = await Api().post('/health-hub', link)
             if (response.status === 200) {
                 try{
-                    state.health_hub_links.data[link.category].push(link);
+                    if(state.health_hub_links.data[link.category] !== undefined){
+                        state.health_hub_links.data[link.category].push(link);
+                    }else{
+                        state.health_hub_links.data[link.category] = [link];
+                    }
                 }catch (e) {
                     console.log(e)
                 }
