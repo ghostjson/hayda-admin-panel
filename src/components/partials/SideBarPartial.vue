@@ -63,10 +63,26 @@
                             </a>
                         </router-link>
                     </li>
+                    <li class="nav-item"  v-bind:class="{ active: active('Games') }">
+                        <router-link to="/games" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-dice"></i>
+                                <p>Games</p>
+                            </a>
+                        </router-link>
+                    </li>
+                    <li class="nav-item"  v-bind:class="{ active: active('Podcasts') }">
+                        <router-link to="/podcasts" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-podcast"></i>
+                                <p>Podcasts</p>
+                            </a>
+                        </router-link>
+                    </li>
                     <li class="nav-item"  v-bind:class="{ active: active('ContentEditor') }">
                         <router-link :to="{name: 'ContentEditor'}" style="padding: 0">
                             <a data-toggle="collapse" href="#base">
-                                <i class="fas fa-pen-nib"></i>
+                                <i class="fas fa-heading"></i>
                                 <p>Content Editor</p>
                             </a>
                         </router-link>
