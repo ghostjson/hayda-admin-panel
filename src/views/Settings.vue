@@ -27,13 +27,13 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="web_app_url">Web Application Home URL</label>
-                    <input id="web_app_url" type="email" v-model="settings['web_app_url']" class="form-control">
+                    <input id="web_app_url" type="text" v-model="settings['web_app_url']" class="form-control">
                 </div>
             </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="admin_panel_url">Admin Panel Home URL</label>
-                    <input id="admin_panel_url" type="email" v-model="settings['admin_panel_url']" class="form-control">
+                    <input id="admin_panel_url" type="text" v-model="settings['admin_panel_url']" class="form-control">
                 </div>
             </div>
         </div>
