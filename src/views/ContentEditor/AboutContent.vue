@@ -161,6 +161,16 @@
                     </div>
                 </div>
                 <div class="card-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="team_description">Team description</label>
+                                <input class="form-control" type="text" id="team_description" v-model="about.team_description">
+                            </div>
+                        </div>
+                    </div>
+
                     <table class="table">
                         <thead>
                         <tr>
@@ -180,6 +190,8 @@
                         </tr>
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
 
@@ -225,6 +237,7 @@
                             description: ''
                         }
                     ],
+                    team_description: '',
                     team: [],
 
                 },

@@ -15,8 +15,8 @@
                         <input type="text" class="form-control" id="facebook" v-model="social.facebook">
                     </div>
                     <div class="form-group">
-                        <label for="dribbble">Dribbble</label>
-                        <input type="text" class="form-control"  id="dribbble" v-model="social.dribbble">
+                        <label for="instagram">Instagram</label>
+                        <input type="text" class="form-control"  id="instagram" v-model="social.instagram">
                     </div>
                     <div class="form-group">
                         <label for="google">Google</label>
@@ -74,7 +74,7 @@
                 success: '',
                 social: {
                     facebook: '',
-                    dribbble: '',
+                    instagram: '',
                     google: '',
                     linkedin: '',
                     pininterest: '',

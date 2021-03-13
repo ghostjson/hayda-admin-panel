@@ -40,6 +40,24 @@
 
         <div class="card">
             <div class="card-header">
+                <h4>App URLs</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="android_url">Android App URL</label>
+                    <input id="android_url" type="text" v-model="app_urls.android" class="form-control">
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="ios_url">IOS App URL</label>
+                    <input id="ios_url" type="text" v-model="app_urls.ios" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4>Theme</h4>
             </div>
             <div class="card-body">
@@ -90,6 +108,10 @@
                     primary_color: '',
                     secondary_color: ''
                 },
+                app_urls: {
+                    android: '',
+                    ios: ''
+                },
                 error: '',
                 success: ''
             }
@@ -98,6 +120,7 @@
             async settingUpdate(e){ e.preventDefault()
                 try{
                     this.settings['theme'] = JSON.stringify(this.theme)
+                    this.settings['app_urls'] = JSON.stringify(this.app_urls)
 
                     await Api().post('/settings', {
                         'settings': this.settings
@@ -113,6 +136,7 @@
                 this.settings = response.data
 
                 this.theme = JSON.parse(this.settings['theme']);
+                this.app_urls = JSON.parse(this.settings['app_urls'])
 
             }
         },
