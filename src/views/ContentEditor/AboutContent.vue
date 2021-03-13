@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="image">Image</label>
+                <label for="image">Image URL</label>
                 <input v-model="team_form.image" type="text" id="image" class="form-control">
             </div>
             <div class="form-group">
@@ -155,7 +155,7 @@
                                     @click="addTeam"
                                     class="btn btn-sm btn-primary"
                             >
-                                Add Memeber
+                                Add Member
                             </button>
                         </div>
                     </div>
