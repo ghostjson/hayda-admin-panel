@@ -87,6 +87,14 @@
                             </a>
                         </router-link>
                     </li>
+                    <li class="nav-item"  v-bind:class="{ active: active('Chatbot') }">
+                        <router-link :to="{name: 'Chatbot'}" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-comment-dots"></i>
+                                <p>Chatbot</p>
+                            </a>
+                        </router-link>
+                    </li>
                     <li class="nav-item"  v-bind:class="{ active: active('PageEditor') }">
                         <router-link to="/pages" style="padding: 0">
                             <a data-toggle="collapse" href="#base">

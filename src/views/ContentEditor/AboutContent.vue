@@ -8,7 +8,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body" >
+        <div class="modal-body">
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -27,7 +27,8 @@
 
             <div class="form-group">
                 <label for="image">Image URL</label>
-                <input v-model="team_form.image" type="text" id="image" class="form-control">
+                <input type="file" @change="onFileChanged" class="form-control" id="image">
+                <!--                <input v-model="team_form.image" type="text" id="image" class="form-control">-->
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
@@ -70,7 +71,8 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary"  v-on:click="closeAddTeamModal"  data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-primary" v-on:click="closeAddTeamModal" data-dismiss="modal">No
+            </button>
             <button type="button" v-on:click="saveMember" class="btn btn-danger">Save</button>
         </div>
     </modal-widget>
@@ -166,7 +168,8 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="team_description">Team description</label>
-                                <input class="form-control" type="text" id="team_description" v-model="about.team_description">
+                                <input class="form-control" type="text" id="team_description"
+                                       v-model="about.team_description">
                             </div>
                         </div>
                     </div>
@@ -184,8 +187,8 @@
                             <td>{{ member.name }}</td>
                             <td>{{ member.title }}</td>
                             <td>
-                                <delete-icon  v-on:click="deleteMember(index)"
-                                              size="2em"></delete-icon>
+                                <delete-icon v-on:click="deleteMember(index)"
+                                             size="2em"></delete-icon>
                             </td>
                         </tr>
                         </tbody>
@@ -245,6 +248,7 @@
                     name: '',
                     title: '',
                     description: '',
+                    image: '',
                     facebook: '',
                     twitter: '',
                     instagram: '',
@@ -265,21 +269,34 @@
             closeAddTeamModal() {
                 this.modal_add_team = false
             },
-            saveMember(){
-              this.about.team.push(this.team_form)
-              this.team_form = {
-                  name: '',
-                  title: '',
-                  description: '',
-                  image: '',
-                  facebook: '',
-                  twitter: '',
-                  instagram: '',
-                  email: ''
-              }
-              this.closeAddTeamModal()
+            onFileChanged(event) {
+                console.log('working')
+                const file = event.target.files[0]
+                const formData = new FormData()
+
+                formData.append('file', file);
+                Api().post('/file-upload', formData)
+                    .then(res => this.team_form.image = res.data)
+            }
+            ,
+            saveMember() {
+                this.about.team.push(this.team_form)
+                this.team_form = {
+                    name: '',
+                    title: '',
+                    description: '',
+                    image: null,
+                    facebook: '',
+                    twitter: '',
+                    instagram: '',
+                    email: ''
+                }
+
+
+                console.log(this.about)
+                this.closeAddTeamModal()
             },
-            deleteMember(id){
+            deleteMember(id) {
                 this.about.team.splice(id, 1)
             },
             async fetchHome() {
