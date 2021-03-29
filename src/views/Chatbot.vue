@@ -276,6 +276,8 @@
                     questions: [],
                     answers: []
                 }
+
+                this.is_add_modal_open = false
             },
             clearIntent() {
                 this.current_intent = {
