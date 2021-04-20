@@ -100,7 +100,11 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h3 class="font-weight-bold">Services</h3>
+                    <h3 class="font-weight-bold">Services</h3> <small>
+                    <a href="https://fontawesome.com/v4.7.0/icons/" target="_blank" class="text-secondary">
+                        Find more icons here
+                    </a>
+                </small>
                 </div>
                 <div class="card-body">
                     <div class="form-group">

@@ -3,16 +3,7 @@
         <div class="container-fluid">
             <nav class="pull-left">
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Blogs
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Home
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">
 
@@ -21,7 +12,7 @@
                 </ul>
             </nav>
             <div class="copyright ml-auto">
-                All copyrights are reserved by HAYDA 2020
+                All copyrights are reserved by HAYDA 2021
             </div>
         </div>
     </footer>
