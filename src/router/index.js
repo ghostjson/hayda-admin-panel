@@ -96,6 +96,11 @@ const routes = [
     path: '/chatbot',
     name: 'Chatbot',
     component: () => import('../views/Chatbot')
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: () => import('../views/Users')
   }
 ]
 

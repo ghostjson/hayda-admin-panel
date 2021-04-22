@@ -70,6 +70,14 @@
                             </a>
                         </router-link>
                     </li>
+                    <li class="nav-item"  v-bind:class="{ active: active('Users') }">
+                        <router-link to="/users" style="padding: 0">
+                            <a data-toggle="collapse" href="#base">
+                                <i class="fas fa-user-alt"></i>
+                                <p>Users</p>
+                            </a>
+                        </router-link>
+                    </li>
                     <li class="nav-item"  v-bind:class="{ active: active('ContentEditor') }">
                         <router-link :to="{name: 'ContentEditor'}" style="padding: 0">
                             <a data-toggle="collapse" href="#base">
