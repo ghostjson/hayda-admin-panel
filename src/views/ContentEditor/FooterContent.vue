@@ -10,7 +10,7 @@
                     <error-alert :error="error"></error-alert>
                     <success-alert :message="success"></success-alert>
                     <div class="form-group">
-                        <label for="who_we_are">Who we are?</label>
+                        <label for="who_we_are">Who we are</label>
                         <input type="text" class="form-control" id="who_we_are" name="who_we_are"
                                v-model="footer.who_we_are">
                     </div>
