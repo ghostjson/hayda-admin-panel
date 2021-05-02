@@ -42,6 +42,10 @@
 <!--                  <td>{{ blog.tag }}</td>-->
                   <td>{{ blog.created_at }}</td>
                   <td>
+                    <a :href="'/blog/edit/'+blog.id">
+                    <edit-icon
+                      size="1.5em"
+                    ></edit-icon></a>
                     <delete-icon
                       v-on:click="deleteBlog(blog.id)"
                       size="2em"
@@ -61,10 +65,11 @@
 import DeleteIcon from "../components/widgets/icons/DeleteIcon";
 import Api from "../services/Api";
 import SuccessAlert from "../components/widgets/SuccessAlert";
+import EditIcon from "../components/widgets/icons/EditIcon";
 
 export default {
   name: "Blog",
-  components: {SuccessAlert, DeleteIcon },
+  components: {EditIcon, SuccessAlert, DeleteIcon },
   data() {
     return {
       blogs: [],
