@@ -106,11 +106,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <div class="form-group">
-                                <label for="steps_title_1">Title 1</label>
-                                <input class="form-control" type="text" id="steps_title_1"
-                                       v-model="about.steps[0].title">
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label for="steps_title_1">Title 1</label>-->
+<!--                                <input class="form-control" type="text" id="steps_title_1"-->
+<!--                                       v-model="about.steps[0].title">-->
+<!--                            </div>-->
                             <div class="form-group">
                                 <label for="steps_description_1">Description 2</label>
                                 <textarea class="form-control" id="steps_description_1"
@@ -118,11 +118,11 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group">
-                                <label for="steps_title_2">Title 2</label>
-                                <input class="form-control" type="text" id="steps_title_2"
-                                       v-model="about.steps[1].title">
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label for="steps_title_2">Title 2</label>-->
+<!--                                <input class="form-control" type="text" id="steps_title_2"-->
+<!--                                       v-model="about.steps[1].title">-->
+<!--                            </div>-->
                             <div class="form-group">
                                 <label for="steps_description_2">Description 2</label>
                                 <textarea class="form-control" id="steps_description_2"
@@ -130,11 +130,11 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group">
-                                <label for="steps_title_3">Title 3</label>
-                                <input class="form-control" type="text" id="steps_title_3"
-                                       v-model="about.steps[2].title">
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label for="steps_title_3">Title 3</label>-->
+<!--                                <input class="form-control" type="text" id="steps_title_3"-->
+<!--                                       v-model="about.steps[2].title">-->
+<!--                            </div>-->
                             <div class="form-group">
                                 <label for="steps_description_3">Description 3</label>
                                 <textarea class="form-control" id="steps_description_3"
