@@ -25,7 +25,9 @@
                             <tr v-for="(user, index) in users" :key="index">
                                 <td>{{ index + 1 }}</td>
                                 <td>{{ user['name'] }}</td>
-                                <td>{{ user['email']}}</td>
+                                <td>
+                                    <a :href="'mailto:'+user['email']">{{ user['email']}}</a>
+                                </td>
                                 <td>{{ user['zip_code']}}</td>
                                 <td>{{ user['weight']}}</td>
                                 <td>{{ user['height']}}</td>
