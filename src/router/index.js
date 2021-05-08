@@ -63,6 +63,11 @@ const routes = [
     component: () => import('../views/ContentEditor/SocialContent')
   },
   {
+   path: '/content-editor/discover-places',
+    name: 'ContentEditorDiscoverPlaces',
+    component: () => import('../views/ContentEditor/DiscoverPlacesContent')
+  },
+  {
     path: '/blog/new',
     name: 'NewBlog',
     component: () => import('../views/NewBlog')
