@@ -76,7 +76,82 @@
             <button type="button" v-on:click="saveMember" class="btn btn-danger">Save</button>
         </div>
     </modal-widget>
+    <modal-widget v-if="modal_edit_team">
+        <div class="modal-header">
+            <h5 class="modal-title">Edit Member</h5>
+            <button v-on:click="modal_edit_team = false" type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="name_edit">Name</label>
+                        <input v-model="team_form.name" type="text" id="name_edit" class="form-control">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="title_edit">Title</label>
+                        <input v-model="team_form.title" type="text" id="title_edit" class="form-control">
+                    </div>
+                </div>
 
+            </div>
+
+            <div class="form-group">
+                <label for="image_edit">Image URL</label>
+                <input type="file" @change="onFileChanged" class="form-control" id="image_edit">
+                <!--                <input v-model="team_form.image" type="text" id="image" class="form-control">-->
+            </div>
+            <div class="form-group">
+                <label for="description_edit">Description</label>
+                <textarea v-model="team_form.description" class="form-control" id="description_edit"></textarea>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="facebook">Facebook</label>
+                        <input v-model="team_form.facebook" type="text" id="facebook" class="form-control">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="twitter_edit">Twitter</label>
+                        <input v-model="team_form.twitter" type="text" id="twitter_edit" class="form-control">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="instagram_edit">Instagram</label>
+                        <input v-model="team_form.instagram" type="text" id="instagram_edit" class="form-control">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="email_edit">Email</label>
+                        <input v-model="team_form.email" type="text" id="email_edit" class="form-control">
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" v-on:click="modal_edit_team = false" data-dismiss="modal">No
+            </button>
+            <button type="button" v-on:click="updateMember" class="btn btn-danger">Save</button>
+        </div>
+    </modal-widget>
     <div class="container-fluid">
         <form @submit="aboutSubmit">
 
@@ -106,11 +181,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-<!--                            <div class="form-group">-->
-<!--                                <label for="steps_title_1">Title 1</label>-->
-<!--                                <input class="form-control" type="text" id="steps_title_1"-->
-<!--                                       v-model="about.steps[0].title">-->
-<!--                            </div>-->
+
                             <div class="form-group">
                                 <label for="steps_description_1">Description 2</label>
                                 <textarea class="form-control" id="steps_description_1"
@@ -118,11 +189,7 @@
                             </div>
                         </div>
                         <div class="col">
-<!--                            <div class="form-group">-->
-<!--                                <label for="steps_title_2">Title 2</label>-->
-<!--                                <input class="form-control" type="text" id="steps_title_2"-->
-<!--                                       v-model="about.steps[1].title">-->
-<!--                            </div>-->
+
                             <div class="form-group">
                                 <label for="steps_description_2">Description 2</label>
                                 <textarea class="form-control" id="steps_description_2"
@@ -130,11 +197,7 @@
                             </div>
                         </div>
                         <div class="col">
-<!--                            <div class="form-group">-->
-<!--                                <label for="steps_title_3">Title 3</label>-->
-<!--                                <input class="form-control" type="text" id="steps_title_3"-->
-<!--                                       v-model="about.steps[2].title">-->
-<!--                            </div>-->
+
                             <div class="form-group">
                                 <label for="steps_description_3">Description 3</label>
                                 <textarea class="form-control" id="steps_description_3"
@@ -187,6 +250,7 @@
                             <td>{{ member.name }}</td>
                             <td>{{ member.title }}</td>
                             <td>
+                                <edit-icon v-on:click="editMemberModalOpen(index)" size="1.2em"></edit-icon>
                                 <delete-icon v-on:click="deleteMember(index)"
                                              size="2em"></delete-icon>
                             </td>
@@ -214,15 +278,17 @@
     import Api from "../../services/Api";
     import ModalWidget from "../../components/widgets/ModalWidget";
     import DeleteIcon from "../../components/widgets/icons/DeleteIcon";
+    import EditIcon from "../../components/widgets/icons/EditIcon";
 
     export default {
         name: 'AboutEditor',
-        components: {DeleteIcon, ModalWidget, SuccessAlert, ErrorAlert},
+        components: {EditIcon, DeleteIcon, ModalWidget, SuccessAlert, ErrorAlert},
         data() {
             return {
                 error: '',
                 success: '',
                 modal_add_team: false,
+                modal_edit_team: false,
                 about: {
                     description_left: '',
                     description_right: '',
@@ -242,7 +308,6 @@
                     ],
                     team_description: '',
                     team: [],
-
                 },
                 team_form: {
                     name: '',
@@ -253,7 +318,8 @@
                     twitter: '',
                     instagram: '',
                     email: ''
-                }
+                },
+                current_edit_team_member: -1
             }
         },
         methods: {
@@ -264,23 +330,6 @@
                 })
             },
             addTeam() {
-                this.modal_add_team = true
-            },
-            closeAddTeamModal() {
-                this.modal_add_team = false
-            },
-            onFileChanged(event) {
-                console.log('working')
-                const file = event.target.files[0]
-                const formData = new FormData()
-
-                formData.append('file', file);
-                Api().post('/file-upload', formData)
-                    .then(res => this.team_form.image = res.data)
-            }
-            ,
-            saveMember() {
-                this.about.team.push(this.team_form)
                 this.team_form = {
                     name: '',
                     title: '',
@@ -291,17 +340,40 @@
                     instagram: '',
                     email: ''
                 }
+                this.modal_add_team = true
+            },
+            closeAddTeamModal() {
+                this.modal_add_team = false
+            },
+            onFileChanged(event) {
+                const file = event.target.files[0]
+                const formData = new FormData()
 
-
-                console.log(this.about)
+                formData.append('file', file);
+                Api().post('/file-upload', formData)
+                    .then(res => this.team_form.image = res.data)
+            }
+            ,
+            saveMember() {
+                this.about.team.push(this.team_form)
                 this.closeAddTeamModal()
+            },
+            updateMember(){
+                this.about.team[this.current_edit_team_member] = this.team_form
+                this.modal_edit_team = false
             },
             deleteMember(id) {
                 this.about.team.splice(id, 1)
             },
+            editMemberModalOpen(id){
+                this.current_edit_team_member = id
+                this.modal_edit_team = true
+                this.team_form = Object.create(this.about.team[id])
+            },
             async fetchHome() {
                 let response = await Api().get('page-content/about')
                 this.about = response.data.data.content
+                console.log(this.about)
             }
         },
         created() {
