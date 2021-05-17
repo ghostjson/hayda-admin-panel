@@ -35,7 +35,7 @@
               </thead>
               <tbody>
                 <tr v-for="(blog, index) in blogs" :key="index">
-                  <td>{{ blog.id }}</td>
+                  <td>{{ index+1 }}</td>
                   <td>{{ blog.title }}</td>
                   <td>{{ blog.author.name }}</td>
                   <td>{{ blog.category }}</td>

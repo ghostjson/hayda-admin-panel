@@ -73,7 +73,7 @@
                             </thead>
                             <tbody>
                             <tr v-for="(podcast, index) in podcasts" :key="index">
-                                <td>{{ podcast.id }}</td>
+                                <td>{{ index+1 }}</td>
                                 <td>{{ podcast.title }}</td>
                                 <td>{{ podcast.link }}</td>
                                 <td>{{ podcast.created_at }}</td>

@@ -73,7 +73,7 @@
                             </thead>
                             <tbody>
                             <tr v-for="(game, index) in games" :key="index">
-                                <td>{{ game.id }}</td>
+                                <td>{{ index+1 }}</td>
                                 <td>{{ game.title }}</td>
                                 <td>{{ game.link }}</td>
                                 <td>{{ game.created_at }}</td>
