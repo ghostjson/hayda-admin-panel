@@ -81,13 +81,19 @@
     <div class="container-fluid">
 
         <div class="text-right mb-4">
-            <button type="button" v-on:click="showAddLinkModal('brain_health')" class="btn btn-sm btn-primary">Add Link</button>
+            <button type="button" v-on:click="showAddLinkModal('brain_health')" class="btn btn-sm btn-primary">Add
+                Link
+            </button>
         </div>
         <div class="card" v-for="(health_hub, index) in Object.keys(links.data)" :key="index">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-12">
                         <h3>{{ health_hub }}</h3>
+                        <div class="buttons" style="position: absolute; right: 10px; top: 5px;font-size: 1.2em;">
+                            <i @click="decreaseCategoryPriority(health_hub)" class="fas fa-long-arrow-alt-down" style="cursor: pointer; margin-right: 7px"></i>
+                            <i @click="increaseCategoryPriority(health_hub)" class="fas fa-long-arrow-alt-up" style="cursor: pointer"></i>
+                        </div>
                     </div>
                     <div class="col-md-9" style="text-align: right">
 
@@ -102,6 +108,7 @@
                         <th scope="col">CAPTION</th>
                         <th scope="col">LINK</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -114,6 +121,10 @@
                         <td>
                             <edit-icon size="1.6em" v-on:click="showEditLinkModal(link.id)"></edit-icon>
                             <delete-icon size="2.4em" v-on:click="showRemoveLinkModal(link.id)"></delete-icon>
+                        </td>
+                        <td>
+                            <i @click="decreaseLinkPriority(link.id)" class="fas fa-long-arrow-alt-down" style="cursor: pointer; margin-right: 7px"></i>
+                            <i @click="increaseLinkPriority(link.id)" class="fas fa-long-arrow-alt-up" style="cursor: pointer"></i>
                         </td>
                     </tr>
                     </tbody>
@@ -130,6 +141,7 @@
     import EditIcon from "../components/widgets/icons/EditIcon";
     import DeleteIcon from "../components/widgets/icons/DeleteIcon";
     import ModalWidget from "../components/widgets/ModalWidget";
+    import Api from "../services/Api";
 
 
     export default {
@@ -195,6 +207,7 @@
                 // location.reload()
             },
             submitAddLink() {
+                console.log(this.add_form)
                 this.$store.commit('addHealthHubLink', this.add_form)
                 this.closeAddLinkModal()
                 // location.reload()
@@ -206,6 +219,26 @@
                     // location.reload()
                 }
                 this.closeRemoveLinkModal()
+            },
+            increaseCategoryPriority(category){
+               Api().get('/health-hub/category/increase/'+ category).then(() => {
+                   location.reload()
+               })
+            },
+            decreaseCategoryPriority(category){
+                Api().get('/health-hub/category/decrease/'+ category).then(() => {
+                    location.reload()
+                })
+            },
+            increaseLinkPriority(id){
+                Api().get('/health-hub/link/increase/'+ id).then(() => {
+                    location.reload()
+                })
+            },
+            decreaseLinkPriority(id){
+                Api().get('/health-hub/link/decrease/'+id).then(() => {
+                    location.reload()
+                })
             }
         },
         mounted() {
