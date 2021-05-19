@@ -30,7 +30,7 @@
         <div class="card-header">
           <h3 class="card-title">Recent Users</h3>
           <div>
-            <a href="/users" class="btn btn-sm btn-primary" style="position:absolute; right: 10px;top: 10px;">View all users</a>
+           <a href="/users" class="btn btn-sm btn-primary" style="position:absolute; right: 10px;top: 10px;">View all users</a>
           </div>
         </div>
         <div class="card-body">
@@ -50,7 +50,7 @@
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.age }}</td>
-              <td>{{ new Date(user.created_at).getDate() + '/' + new Date(user.created_at).getMonth() + '/' + new Date(user.created_at).getFullYear()  }}</td>
+              <td>{{ new Date(user.created_at).getMonth() + '/' + new Date(user.created_at).getDate() + '/' + new Date(user.created_at).getFullYear()  }}</td>
             </tr>
             </tbody>
           </table>
