@@ -33,7 +33,7 @@
                                 <td>{{ user['height']}}</td>
                                 <td>{{ user['age']}}</td>
                                 <td>{{ user['gender']}}</td>
-                                <td>{{ new Date(user['created_at']).getMonth() + '/' + new Date(user['created_at']).getDate() + '/' + new Date(user['created_at']).getFullYear()}}</td>
+                                <td>{{ new Date(user['created_at']).getMonth() + 1 + '/' + new Date(user['created_at']).getDate() + '/' + new Date(user['created_at']).getFullYear()}}</td>
                             </tr>
                             </tbody>
                         </table>
