@@ -90,10 +90,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3>{{ health_hub }}</h3>
-                        <div class="buttons" style="position: absolute; right: 10px; top: 5px;font-size: 1.2em;">
-                            <i @click="decreaseCategoryPriority(health_hub)" class="fas fa-long-arrow-alt-down" style="cursor: pointer; margin-right: 7px"></i>
-                            <i @click="increaseCategoryPriority(health_hub)" class="fas fa-long-arrow-alt-up" style="cursor: pointer"></i>
-                        </div>
+<!--                        <div class="buttons" style="position: absolute; right: 10px; top: 5px;font-size: 1.2em;">-->
+<!--                            <i @click="decreaseCategoryPriority(health_hub)" class="fas fa-long-arrow-alt-down" style="cursor: pointer; margin-right: 7px"></i>-->
+<!--                            <i @click="increaseCategoryPriority(health_hub)" class="fas fa-long-arrow-alt-up" style="cursor: pointer"></i>-->
+<!--                        </div>-->
                     </div>
                     <div class="col-md-9" style="text-align: right">
 
@@ -122,10 +122,10 @@
                             <edit-icon size="1.6em" v-on:click="showEditLinkModal(link.id)"></edit-icon>
                             <delete-icon size="2.4em" v-on:click="showRemoveLinkModal(link.id)"></delete-icon>
                         </td>
-                        <td>
-                            <i @click="decreaseLinkPriority(link.id)" class="fas fa-long-arrow-alt-down" style="cursor: pointer; margin-right: 7px"></i>
-                            <i @click="increaseLinkPriority(link.id)" class="fas fa-long-arrow-alt-up" style="cursor: pointer"></i>
-                        </td>
+<!--                        <td>-->
+<!--                            <i @click="decreaseLinkPriority(link.id)" class="fas fa-long-arrow-alt-down" style="cursor: pointer; margin-right: 7px"></i>-->
+<!--                            <i @click="increaseLinkPriority(link.id)" class="fas fa-long-arrow-alt-up" style="cursor: pointer"></i>-->
+<!--                        </td>-->
                     </tr>
                     </tbody>
                 </table>
