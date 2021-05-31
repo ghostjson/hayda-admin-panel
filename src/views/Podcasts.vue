@@ -75,7 +75,7 @@
                             <tr v-for="(podcast, index) in podcasts" :key="index"><td>{{ index+1 }}</td>
                                 <td>{{ podcast.title }}</td>
                                 <td>{{ podcast.link }}</td>
-                                <td>{{ podcast.created_at }}</td>
+                                <td>{{ new Date(podcast.created_at).getMonth() + '/' +new Date(podcast.created_at).getDate() + '/' + new Date(podcast.created_at).getFullYear() }}</td>
                                 <td>
                                     <delete-icon
                                             v-on:click="deletePodcast(podcast.id)"

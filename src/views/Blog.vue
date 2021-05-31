@@ -6,7 +6,7 @@
           <div class="card-header">
             <div class="row">
               <div class="col-md-3">
-                <h3>Blog</h3>
+                <h3>Blog Bits</h3>
               </div>
               <div class="col-md-9" style="text-align: right">
                 <button
@@ -40,7 +40,7 @@
                   <td>{{ blog.author.name }}</td>
                   <td>{{ blog.category }}</td>
 <!--                  <td>{{ blog.tag }}</td>-->
-                  <td>{{ blog.created_at }}</td>
+                  <td>{{ dateFormatter(blog.created_at) }}</td>
                   <td>
                     <a :href="'/blog/edit/'+blog.id">
                     <edit-icon
@@ -66,6 +66,7 @@ import DeleteIcon from "../components/widgets/icons/DeleteIcon";
 import Api from "../services/Api";
 import SuccessAlert from "../components/widgets/SuccessAlert";
 import EditIcon from "../components/widgets/icons/EditIcon";
+import dateFormatter from "../helpers/dateFormatter";
 
 export default {
   name: "Blog",
@@ -77,6 +78,7 @@ export default {
     };
   },
   methods: {
+    dateFormatter,
     deleteBlog(id) {
       let response = Api().delete('/blog/'+id)
       response.then(() => {

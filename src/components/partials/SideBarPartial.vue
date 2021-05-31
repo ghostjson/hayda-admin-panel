@@ -50,7 +50,7 @@
                         <router-link to="/blog" style="padding: 0">
                             <a data-toggle="collapse" href="#base">
                                 <i class="fas fa-pen-nib"></i>
-                                <p>Blog</p>
+                                <p>Blog Bits</p>
                             </a>
                         </router-link>
                     </li>
