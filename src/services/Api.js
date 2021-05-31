@@ -1,11 +1,11 @@
 import axios from "axios";
 import store from "./../store/index";
-// import config from "./../config.json"
+import config from "./../config.json"
 
 export default () => {
   const axiosObject = axios.create({
-    // baseURL: config.server.api_url,
-    baseURL: "http://localhost:8000/api",
+    baseURL: config.server.api_url,
+    // baseURL: "http://localhost:8000/api",
     withCredentials: false,
     headers: {
       Accept: "application/json",
