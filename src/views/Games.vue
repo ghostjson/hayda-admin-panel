@@ -76,7 +76,7 @@
                                 <td>{{ index+1 }}</td>
                                 <td>{{ game.title }}</td>
                                 <td>{{ game.link }}</td>
-                                <td>{{ new Date(game.created_at).getMonth() + '/' +new Date(game.created_at).getDate() + '/' + new Date(game.created_at).getFullYear()}}</td>
+                                <td>{{ (new Date(game.created_at).getMonth() + 1) + '/' +new Date(game.created_at).getDate() + '/' + new Date(game.created_at).getFullYear()}}</td>
                                 <td>
                                     <delete-icon
                                             v-on:click="deleteGame(game.id)"
