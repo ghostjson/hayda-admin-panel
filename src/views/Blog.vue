@@ -28,24 +28,21 @@
                   <th scope="col">Title</th>
                   <th scope="col">Author</th>
                   <th scope="col">Category</th>
-<!--                  <th scope="col">Tag</th>-->
                   <th scope="col">Date</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(blog, index) in blogs" :key="index">
-                  <td>{{ index+1 }}</td>
+                  <td>{{ index + 1 }}</td>
                   <td>{{ blog.title }}</td>
                   <td>{{ blog.author.name }}</td>
                   <td>{{ blog.category }}</td>
-<!--                  <td>{{ blog.tag }}</td>-->
                   <td>{{ dateFormatter(blog.created_at) }}</td>
                   <td>
-                    <a :href="'/blog/edit/'+blog.id">
-                    <edit-icon
-                      size="1.5em"
-                    ></edit-icon></a>
+                    <a :href="'/blog/edit/' + blog.id">
+                      <edit-icon size="1.5em"></edit-icon
+                    ></a>
                     <delete-icon
                       v-on:click="deleteBlog(blog.id)"
                       size="2em"
@@ -70,20 +67,20 @@ import dateFormatter from "../helpers/dateFormatter";
 
 export default {
   name: "Blog",
-  components: {EditIcon, SuccessAlert, DeleteIcon },
+  components: { EditIcon, SuccessAlert, DeleteIcon },
   data() {
     return {
       blogs: [],
-      message: ''
+      message: "",
     };
   },
   methods: {
     dateFormatter,
     deleteBlog(id) {
-      let response = Api().delete('/blog/'+id)
+      let response = Api().delete("/blog/" + id);
       response.then(() => {
-        this.message = 'Successfully deleted blog post'
-      })
+        this.message = "Successfully deleted blog post";
+      });
     },
     newBlog() {
       this.$router.push("/blog/new");

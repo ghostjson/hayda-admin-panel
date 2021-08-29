@@ -1,17 +1,17 @@
 import axios from "axios";
 import store from "./../store/index";
-import config from "./../config.json"
+// import config from "./../config.json"
 
 export default () => {
   const axiosObject = axios.create({
-    baseURL: config.server.api_url,
-    // baseURL: "http://localhost:8000/api",
+    // baseURL: config.server.api_url,
+    baseURL: "http://localhost:8000/api",
     withCredentials: false,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: "Bearer " + localStorage.getItem("Token"),
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
     },
   });
 
@@ -38,9 +38,9 @@ export default () => {
       store.dispatch("closeSpinner");
 
       if (error.response.status === 401) {
-        localStorage.removeItem('expiry')
-        localStorage.removeItem('Token');
-        location.href = '/login'
+        localStorage.removeItem("expiry");
+        localStorage.removeItem("Token");
+        location.href = "/login";
       }
 
       return Promise.reject(error);
